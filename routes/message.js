@@ -5,7 +5,7 @@ const messageController = require("../controllers/message");
 
 const { ensureAuthenticated } = require("../middlewares/isAuth");
 messageRouter.post(
-    "/create",
+    "/",
     [
         body("phoneNumber").trim().not().isEmpty().withMessage("Phone Number is Required"),
         body("fullName")

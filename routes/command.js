@@ -6,7 +6,7 @@ const commandController = require("../controllers/command");
 const { ensureAuthenticated } = require("../middlewares/isAuth");
 
 commandRouter.post(
-    "/create",
+    "/",
     [
         body("senderName").trim().not().isEmpty().withMessage("Sender Name is Required"),
         body("senderAddress").trim().not().isEmpty().withMessage("Sender Address is Required"),

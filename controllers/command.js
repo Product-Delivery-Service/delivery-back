@@ -1,6 +1,12 @@
 const Command = require("../models/Command")
 
 exports.addCommand = (req, res) => {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let code = '';
+  for (let i = 0; i < 10; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    code += characters.charAt(randomIndex);
+  }
       let newCommand = {
         senderName: req.body.senderName,
         senderAddress: req.body.senderAddress,
@@ -10,6 +16,7 @@ exports.addCommand = (req, res) => {
         receiverAddress: req.body.receiverAddress,
         receiverPhone: req.body.receiverPhone,
         receiverEmail: req.body.receiverEmail,
+        shipmentDate: req.body.shipmentDate,
         shipmentName: req.body.shipmentName,
         shipmentCount: req.body.shipmentCount,
         shipmentValue: req.body.shipmentValue,
@@ -17,7 +24,7 @@ exports.addCommand = (req, res) => {
         shipmentWeight: req.body.shipmentWeight,
         shipmentService: req.body.shipmentService,
         shipmentState: "Shipment Created",
-        trackingCode: "ABC12345",
+        trackingCode: code,
     };
       Command.create(newCommand)
         .then((command) => {

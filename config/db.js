@@ -1,11 +1,21 @@
 const sequelize = require("sequelize");
 const dbConfig = new sequelize.Sequelize(
 
-  "Your_database_name",
-  "Your_user_name",
-  "Your_password",
+  // "delivery",
+  // "root",
+  // "root",
+
+  "myredatestdb",
+  "reda123",
+  "Reda12345",
+
+  // "Your_database_name",
+  // "Your_user_name",
+  // "Your_password",
   {
-    host: "Your_host",
+    // host: "Your_host",
+    // host: "localhost",
+    host: "db4free.net",
     dialect: "mysql",
     pool: {
       min: 0,

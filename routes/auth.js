@@ -2,6 +2,7 @@ const { body } = require("express-validator");
 const express = require("express");
 const authRouter = express.Router();
 const authController = require("../controllers/auth");
+const { ensureAuthenticated } = require("../middlewares/isAuth");
 
 const Agent = require("../models/Agent")
 
@@ -39,6 +40,34 @@ authRouter.post(
     authController.signUp
 );
 
-authRouter.post("/login", authController.login);
+authRouter.post("/login", authController.login, (req, res) => {
+    if (req.isAuthenticated()) {
+        const currentUser = req.user;
+        res.status(200).json({
+            success: true,
+            message: "You are logged in",
+            data: {
+                fullName: currentUser.fullName,
+                email: currentUser.email,
+            },
+        });
+    }
+});
+
+authRouter.get("/logout", ensureAuthenticated, (req, res) => {
+    req.logout();
+    res.send("log out");
+});
+
+authRouter.get("/user", ensureAuthenticated, (req, res) => {
+    if (req.isAuthenticated()) {
+        const currentUser = req.user;
+        res.status(200).json({
+            fullName: currentUser.fullName,
+            email: currentUser.email,
+        });
+    }
+});
+
 
 module.exports = authRouter
