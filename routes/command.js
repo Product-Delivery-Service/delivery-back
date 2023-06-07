@@ -35,4 +35,10 @@ commandRouter.get(
     commandController.getCommands
 );
 
+commandRouter.post(
+    "/trackingCode",
+
+    commandController.getCommandByTrackingCode
+);
+
 module.exports = commandRouter

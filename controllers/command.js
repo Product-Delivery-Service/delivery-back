@@ -59,3 +59,21 @@ exports.getCommands = (req, res) => {
         })
       );
 }
+
+exports.getCommandByTrackingCode = (req, res) => {
+  Command.findOne({where: {tackingCode: req.body.trackingCode}})
+        .then((command) =>
+        res.status(200).json({
+            success: true,
+            data: command,
+        })
+      )
+      .catch((err) =>
+        res.status(400).json({
+            success: false,
+            message: "Could Not Find Command",
+            error: err,
+        })
+      );
+}
+
