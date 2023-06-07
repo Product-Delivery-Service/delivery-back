@@ -30,6 +30,7 @@ exports.getMessages = (req, res) => {
         .then((messages) =>
         res.status(200).json({
             success: true,
+            message: "Messages Fetched Successfully",
             data: messages,
         })
       )

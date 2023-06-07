@@ -48,6 +48,7 @@ exports.getCommands = (req, res) => {
         .then((commands) =>
         res.status(200).json({
             success: true,
+            message: "Commands Fetched Successfully",
             data: commands,
         })
       )
@@ -61,10 +62,34 @@ exports.getCommands = (req, res) => {
 }
 
 exports.getCommandByTrackingCode = (req, res) => {
-  Command.findOne({where: {tackingCode: req.body.trackingCode}})
+  Command.findOne({where: {trackingCode: req.body.trackingCode}})
         .then((command) =>
         res.status(200).json({
             success: true,
+            data: command,
+        })
+      )
+      .catch((err) =>
+        res.status(400).json({
+            success: false,
+            message: "Could Not Find Command",
+            error: err,
+        })
+      );
+}
+
+exports.updateCommand = (req, res) => {
+  Command.update(
+    {
+      shipmentState: req.body.shipmentState,
+    },
+    {
+      where: { id: req.body.id },
+    }
+  ).then((command) =>
+        res.status(200).json({
+            success: true,
+            message: "Command Updated Successfully",
             data: command,
         })
       )

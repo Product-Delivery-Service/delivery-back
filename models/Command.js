@@ -12,12 +12,12 @@ const Command = dbConfig.define(
                 primaryKey: true,
             },
             senderName: {
-                  type: DataTypes.STRING,
-                  allowNull: false,
+                type: DataTypes.STRING,
+                allowNull: false,
             },
             senderAddress: {
-                  type: DataTypes.STRING,
-                  allowNull: false,
+                type: DataTypes.STRING,
+                allowNull: false,
             },
             senderPhone: {
                 type: DataTypes.STRING,
@@ -28,12 +28,12 @@ const Command = dbConfig.define(
                 allowNull: false,
             },
             receiverName: {
-                  type: DataTypes.STRING,
-                  allowNull: false,
+                type: DataTypes.STRING,
+                allowNull: false,
             },
             receiverAddress: {
-                  type: DataTypes.STRING,
-                  allowNull: false,
+                type: DataTypes.STRING,
+                allowNull: false,
             },
             receiverPhone: {
                 type: DataTypes.STRING,
@@ -72,8 +72,8 @@ const Command = dbConfig.define(
                 allowNull: false,
             },
             shipmentState: {
-              type: DataTypes.STRING,
-              allowNull: false,
+                type: DataTypes.STRING,
+                allowNull: false,
             },
             trackingCode: {
                 type: DataTypes.STRING,

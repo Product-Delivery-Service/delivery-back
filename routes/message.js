@@ -22,7 +22,7 @@ messageRouter.post(
 messageRouter.get(
     "/",
 
-    ensureAuthenticated,
+    // ensureAuthenticated,
     messageController.getMessages
 );
 

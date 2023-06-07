@@ -31,7 +31,7 @@ commandRouter.post(
 commandRouter.get(
     "/",
 
-    ensureAuthenticated,
+    // ensureAuthenticated,
     commandController.getCommands
 );
 
@@ -39,6 +39,12 @@ commandRouter.post(
     "/trackingCode",
 
     commandController.getCommandByTrackingCode
+);
+
+commandRouter.post(
+    "/update",
+
+    commandController.updateCommand
 );
 
 module.exports = commandRouter
